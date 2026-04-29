@@ -10,28 +10,29 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <style>
 :root {
-  --cream:#FFF8F0; --cream2:#FFF3E6;
-  --orange:#FF8C42; --orange-d:#E06B20; --orange-l:#FFECD6; --orange-ll:#FFF5EC;
-  --coral:#FF6B6B; --coral-l:#FFE5E5; --coral-d:#C0392B;
-  --yellow:#FFD166; --yellow-l:#FFF3CC;
-  --green:#5CB85C; --green-l:#E6F5E6; --green-d:#3D8B3D;
-  --blue:#4A90D9; --blue-l:#E3EFFC; --blue-d:#2563EB;
-  --purple:#9B72CF; --purple-l:#EEE5F8;
-  --pink:#FF8FAB; --pink-l:#FFECF2;
-  --gray:#F5F0EB; --gray2:#E8E2DC; --gray3:#C8BFB5;
-  --text:#3D2B1F; --text2:#7A5C48; --text3:#B0917C;
-  --border:#EDE0D4;
-  --sh-sm:0 2px 8px rgba(139,94,60,.08);
-  --sh-md:0 4px 20px rgba(139,94,60,.12);
-  --sh-lg:0 8px 40px rgba(139,94,60,.18);
-  --r-sm:10px; --r-md:16px; --r-lg:24px; --r-xl:32px;
-  --sidebar:220px;
+  /* 專業清新風格配置 */
+  --cream:#F8FAFC; --cream2:#F1F5F9;
+  --orange:#0EA5E9; --orange-d:#0284C7; --orange-l:#E0F2FE; --orange-ll:#F0F9FF; /* 主色：天際藍 */
+  --coral:#EF4444; --coral-l:#FEE2E2; --coral-d:#B91C1C; /* 警告色：專業紅 */
+  --yellow:#F59E0B; --yellow-l:#FEF3C7;
+  --green:#10B981; --green-l:#D1FAE5; --green-d:#047857; /* 輔色：翡翠綠 */
+  --blue:#6366F1; --blue-l:#E0E7FF; --blue-d:#4338CA; /* 點綴：靛藍色 */
+  --purple:#8B5CF6; --purple-l:#EDE9FE;
+  --pink:#EC4899; --pink-l:#FCE7F3;
+  --gray:#F1F5F9; --gray2:#E2E8F0; --gray3:#94A3B8;
+  --text:#0F172A; --text2:#334155; --text3:#64748B;
+  --border:#E2E8F0;
+  --sh-sm:0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --sh-md:0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --sh-lg:0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --r-sm:6px; --r-md:8px; --r-lg:12px; --r-xl:16px;
+  --sidebar:240px;
   --bot-nav:64px;
   --safe-b:env(safe-area-inset-bottom,0px);
 }
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);color:var(--text);min-height:100vh;overflow-x:hidden}
-.sidebar{width:var(--sidebar);position:fixed;left:0;top:0;bottom:0;background:linear-gradient(160deg,#FF8C42 0%,#FF6363 100%);display:flex;flex-direction:column;z-index:100;box-shadow:var(--sh-lg);}
+.sidebar{width:var(--sidebar);position:fixed;left:0;top:0;bottom:0;background:linear-gradient(160deg,#0EA5E9 0%,#6366F1 100%);display:flex;flex-direction:column;z-index:100;box-shadow:var(--sh-lg);}
 .sidebar-logo{padding:22px 14px 18px;text-align:center;border-bottom:1px solid rgba(255,255,255,.2)}
 .sidebar-logo .emoji{font-size:34px;display:block;margin-bottom:6px}
 .sidebar-logo .title{color:#fff;font-size:13px;font-weight:800;line-height:1.4}
@@ -54,7 +55,7 @@ body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);colo
 .sf-btn.setup{background:rgba(255,255,255,.25);color:#fff;border:1px dashed rgba(255,255,255,.5)}
 .sf-btn:hover{opacity:.85}
 .main{margin-left:var(--sidebar);min-height:100vh;padding:24px;padding-bottom:40px}
-.bot-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--border);z-index:200;padding-bottom:var(--safe-b);box-shadow:0 -4px 20px rgba(139,94,60,.1)}
+.bot-nav{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--border);z-index:200;padding-bottom:var(--safe-b);box-shadow:0 -4px 20px rgba(0,0,0,.05)}
 .bot-nav-inner{display:flex;height:var(--bot-nav)}
 .bot-nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--text3);font-size:10px;font-weight:700;transition:all .2s;position:relative}
 .bot-nav-item i{font-size:18px}
@@ -75,25 +76,25 @@ body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);colo
 .stat-icon{font-size:26px;flex-shrink:0}
 .stat-label{font-size:11px;color:var(--text3);font-weight:600}
 .stat-value{font-size:22px;font-weight:900;color:var(--text);line-height:1}
-.sc-o{background:var(--orange-ll);border-color:#FFD6B0}
-.sc-r{background:var(--coral-l);border-color:#FFBCBC}
-.sc-g{background:var(--green-l);border-color:#B8EAB8}
-.sc-y{background:var(--yellow-l);border-color:#FFE5A0}
-.sc-b{background:var(--blue-l);border-color:#B8D6F8}
+.sc-o{background:var(--orange-ll);border-color:var(--orange-l)}
+.sc-r{background:var(--coral-l);border-color:#FCA5A5}
+.sc-g{background:var(--green-l);border-color:#6EE7B7}
+.sc-y{background:var(--yellow-l);border-color:#FCD34D}
+.sc-b{background:var(--blue-l);border-color:#A5B4FC}
 .alert{border-radius:var(--r-md);padding:11px 14px;margin-bottom:8px;display:flex;align-items:flex-start;gap:9px;font-size:13px;font-weight:500}
-.al-r{background:#FFF0F0;border:1px solid #FFBBBB;color:var(--coral-d)}
-.al-y{background:#FFFBE0;border:1px solid #FFE56A;color:#8A6000}
-.al-g{background:var(--green-l);border:1px solid #A8E0A8;color:var(--green-d)}
-.al-b{background:var(--blue-l);border:1px solid #A8CCF0;color:var(--blue-d)}
+.al-r{background:#FEF2F2;border:1px solid #FECACA;color:var(--coral-d)}
+.al-y{background:#FFFBEB;border:1px solid #FDE68A;color:#B45309}
+.al-g{background:var(--green-l);border:1px solid #A7F3D0;color:var(--green-d)}
+.al-b{background:var(--orange-ll);border:1px solid #BAE6FD;color:var(--orange-d)}
 .alert i{margin-top:1px;flex-shrink:0}
 .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 16px;border-radius:var(--r-sm);border:none;cursor:pointer;font-size:14px;font-weight:700;font-family:inherit;transition:all .2s;min-height:44px;white-space:nowrap}
-.btn-p{background:var(--orange);color:#fff;box-shadow:0 3px 10px rgba(255,140,66,.28)}
+.btn-p{background:var(--orange);color:#fff;box-shadow:var(--sh-sm)}
 .btn-p:hover{background:var(--orange-d)}
-.btn-s{background:var(--green);color:#fff;box-shadow:0 3px 8px rgba(92,184,92,.28)}
+.btn-s{background:var(--green);color:#fff;box-shadow:var(--sh-sm)}
 .btn-s:hover{background:var(--green-d)}
-.btn-d{background:var(--coral);color:#fff;box-shadow:0 3px 8px rgba(255,107,107,.28)}
+.btn-d{background:var(--coral);color:#fff;box-shadow:var(--sh-sm)}
 .btn-d:hover{background:var(--coral-d)}
-.btn-o{background:transparent;color:var(--orange);border:2px solid var(--orange)}
+.btn-o{background:transparent;color:var(--orange);border:1px solid var(--orange)}
 .btn-o:hover{background:var(--orange-ll)}
 .btn-g{background:var(--gray);color:var(--text2);border:1px solid var(--border)}
 .btn-g:hover{background:var(--gray2)}
@@ -103,10 +104,10 @@ body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);colo
 .t-o{background:var(--orange-l);color:var(--orange-d)}
 .t-r{background:var(--coral-l);color:var(--coral-d)}
 .t-g{background:var(--green-l);color:var(--green-d)}
-.t-y{background:var(--yellow-l);color:#8A6000}
+.t-y{background:var(--yellow-l);color:#B45309}
 .t-b{background:var(--blue-l);color:var(--blue-d)}
-.t-p{background:var(--purple-l);color:#5E3A9E}
-.t-gray{background:var(--gray);color:var(--text2)}
+.t-p{background:var(--purple-l);color:#6D28D9}
+.t-gray{background:var(--gray2);color:var(--text2)}
 .list-item{background:#fff;border-radius:var(--r-md);padding:13px 15px;border:1px solid var(--border);margin-bottom:7px;box-shadow:var(--sh-sm)}
 .li-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:5px}
 .li-name{font-weight:800;font-size:14.5px}
@@ -115,17 +116,17 @@ body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);colo
 .locked-badge{display:inline-flex;align-items:center;gap:3px;background:var(--gray);color:var(--text3);font-size:10px;font-weight:700;padding:2px 7px;border-radius:9px}
 .fg{margin-bottom:13px}
 .fl{font-size:13px;font-weight:700;color:var(--text2);margin-bottom:5px;display:block}
-.fi,.fs,.fta{width:100%;padding:11px 13px;border:2px solid var(--border);border-radius:var(--r-sm);font-size:16px;font-family:inherit;color:var(--text);background:#fff;transition:border-color .2s;-webkit-appearance:none}
+.fi,.fs,.fta{width:100%;padding:11px 13px;border:1px solid var(--border);border-radius:var(--r-sm);font-size:16px;font-family:inherit;color:var(--text);background:#fff;transition:border-color .2s;-webkit-appearance:none;box-shadow:inset 0 1px 2px rgba(0,0,0,0.02)}
 .fi:focus,.fs:focus,.fta:focus{outline:none;border-color:var(--orange)}
 .fta{resize:vertical;min-height:72px}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .fhint{font-size:11px;color:var(--text3);margin-top:3px}
-.overlay{position:fixed;inset:0;background:rgba(61,43,31,.45);z-index:300;display:none;align-items:flex-end;backdrop-filter:blur(2px)}
+.overlay{position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:300;display:none;align-items:flex-end;backdrop-filter:blur(2px)}
 .overlay.show{display:flex}
 .overlay.center{align-items:center;justify-content:center}
 .bottom-sheet,.modal-box{background:#fff;padding:20px 20px calc(20px + var(--safe-b));width:100%;max-height:90vh;overflow-y:auto;animation:slideUp .3s ease}
 .bottom-sheet{border-radius:var(--r-xl) var(--r-xl) 0 0}
-.modal-box{border-radius:var(--r-xl);max-width:480px;margin:16px;animation:popIn .25s ease}
+.modal-box{border-radius:var(--r-lg);max-width:480px;margin:16px;animation:popIn .25s ease}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
 @keyframes popIn{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}
 .sh-handle{width:40px;height:4px;background:var(--border);border-radius:2px;margin:0 auto 14px}
@@ -133,7 +134,7 @@ body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);colo
 .pb-wrap{background:var(--border);border-radius:8px;height:7px;overflow:hidden}
 .pb-fill{height:100%;border-radius:8px;transition:width .4s ease}
 .pb-g{background:var(--green)}
-.pb-o{background:var(--orange)}
+.pb-o{background:var(--yellow)}
 .pb-r{background:var(--coral)}
 .cal-wrap{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
 .cal-wday{text-align:center;font-size:11px;font-weight:700;color:var(--text3);padding:7px 2px}
@@ -143,7 +144,7 @@ body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);colo
 .cal-day:hover{border-color:var(--orange);box-shadow:var(--sh-sm)}
 .cal-day.om{opacity:.3;background:var(--cream);cursor:default}
 .cal-day.today{border:2px solid var(--orange)}
-.cal-day.we,.cal-day.hd{background:#FFF7F4}
+.cal-day.we,.cal-day.hd{background:#F8FAFC}
 .cal-dn{font-weight:700;font-size:13px;display:block;margin-bottom:2px}
 .cal-day.we .cal-dn,.cal-day.hd .cal-dn{color:var(--coral)}
 .cal-day.today .cal-dn{background:var(--orange);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px}
@@ -154,22 +155,22 @@ body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);colo
 .cal-ev.sc{background:var(--orange-l);color:var(--orange-d)}
 .table-wrap{overflow-x:auto;border-radius:var(--r-md);border:1px solid var(--border)}
 .dtable{width:100%;border-collapse:collapse}
-.dtable th{background:var(--orange-l);color:var(--text);font-weight:800;padding:9px 11px;text-align:left;font-size:12px;border-bottom:2px solid var(--border)}
+.dtable th{background:var(--gray);color:var(--text2);font-weight:800;padding:9px 11px;text-align:left;font-size:12px;border-bottom:1px solid var(--border)}
 .dtable td{padding:9px 11px;font-size:13px;border-bottom:1px solid var(--border);vertical-align:middle}
 .dtable tr:hover td{background:var(--cream)}
-.tc{background:#fff;border-radius:var(--r-lg);border:1px solid var(--border);padding:15px;box-shadow:var(--sh-sm);display:flex;align-items:flex-start;gap:11px}
+.tc{background:#fff;border-radius:var(--r-md);border:1px solid var(--border);padding:15px;box-shadow:var(--sh-sm);display:flex;align-items:flex-start;gap:11px}
 .tc-av{width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px;flex-shrink:0}
 .tc-name{font-weight:800;font-size:15px}
 .tc-sub{font-size:12px;color:var(--text3);margin-bottom:5px}
 .tc-stats{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:9px}
 .toast-c{position:fixed;top:18px;left:50%;transform:translateX(-50%);z-index:9999;display:flex;flex-direction:column;gap:7px;pointer-events:none}
-.toast{background:var(--text);color:#fff;padding:11px 18px;border-radius:var(--r-md);font-size:13.5px;font-weight:600;box-shadow:var(--sh-lg);animation:tIn .3s ease;pointer-events:auto;white-space:nowrap}
+.toast{background:var(--text);color:#fff;padding:11px 18px;border-radius:var(--r-sm);font-size:13.5px;font-weight:600;box-shadow:var(--sh-lg);animation:tIn .3s ease;pointer-events:auto;white-space:nowrap}
 .toast.s{background:var(--green-d)}
 .toast.e{background:var(--coral-d)}
-.toast.w{background:#8A6000}
+.toast.w{background:#B45309}
 @keyframes tIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 .tabs{display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap}
-.tab{padding:8px 15px;border-radius:20px;border:2px solid var(--border);background:#fff;color:var(--text2);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;min-height:36px}
+.tab{padding:8px 15px;border-radius:20px;border:1px solid var(--border);background:#fff;color:var(--text2);font-size:13px;font-weight:700;cursor:pointer;transition:all .2s;font-family:inherit;min-height:36px}
 .tab.active{background:var(--orange);color:#fff;border-color:var(--orange)}
 .divider{height:1px;background:var(--border);margin:14px 0}
 .empty{text-align:center;padding:44px 20px;color:var(--text3)}
@@ -180,14 +181,14 @@ body{font-family:'Noto Sans TC','Nunito',sans-serif;background:var(--cream);colo
 .gap8{gap:8px}.gap12{gap:12px}
 .tr{color:var(--coral)}.tg{color:var(--green-d)}.tb{color:var(--blue-d)}.fw8{font-weight:800}
 .sec-label{font-size:12px;font-weight:800;color:var(--text3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:8px;margin-top:14px}
-.pw-note{background:#FFF3CD;border:1px solid #FFE066;border-radius:8px;padding:7px 11px;font-size:11px;color:#7A5C00;margin-top:10px}
+.pw-note{background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:7px 11px;font-size:11px;color:#92400E;margin-top:10px}
 .ci{display:flex;align-items:center;gap:8px;padding:9px 13px;background:var(--cream);border-radius:var(--r-sm);cursor:pointer;font-size:14px}
 .ci input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:var(--orange)}
 .admin-banner{display:flex;align-items:center;gap:8px;padding:7px 14px;border-radius:var(--r-md);font-size:13px;font-weight:700}
-.admin-banner.on{background:var(--green-l);color:var(--green-d);border:1px solid #A8E0A8}
-.admin-banner.off{background:var(--coral-l);color:var(--coral-d);border:1px solid #FFBBBB}
+.admin-banner.on{background:var(--green-l);color:var(--green-d);border:1px solid #A7F3D0}
+.admin-banner.off{background:var(--gray2);color:var(--text2);border:1px solid var(--border)}
 /* 設定頁面特殊樣式 */
-.setup-box{background:linear-gradient(135deg,#FFF5EC,#FFF0F8);border:2px dashed var(--orange);border-radius:var(--r-lg);padding:22px;text-align:center;margin-bottom:18px}
+.setup-box{background:var(--orange-ll);border:1px dashed var(--orange);border-radius:var(--r-md);padding:22px;text-align:center;margin-bottom:18px}
 .setup-box h2{font-size:18px;font-weight:900;color:var(--orange-d);margin-bottom:8px}
 .setup-box p{font-size:13px;color:var(--text2);line-height:1.7}
 .step-list{counter-reset:step;list-style:none;text-align:left;margin-top:14px}
@@ -208,7 +209,7 @@ code{background:var(--gray);padding:2px 6px;border-radius:5px;font-size:12px;fon
 }
 @media(min-width:769px){
   .overlay.bsc{align-items:center;justify-content:center}
-  .bottom-sheet{border-radius:var(--r-xl);max-width:560px;margin:auto}
+  .bottom-sheet{border-radius:var(--r-lg);max-width:560px;margin:auto}
 }
 </style>
 </head>
@@ -273,9 +274,9 @@ code{background:var(--gray);padding:2px 6px;border-radius:5px;font-size:12px;fon
     </div>
     <div class="card">
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:14px">
-        <button style="width:38px;height:38px;border-radius:50%;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:15px;color:var(--text2)" onclick="calPrev()"><i class="fa-solid fa-chevron-left"></i></button>
+        <button style="width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:15px;color:var(--text2)" onclick="calPrev()"><i class="fa-solid fa-chevron-left"></i></button>
         <div id="cal-title" style="font-size:19px;font-weight:900"></div>
-        <button style="width:38px;height:38px;border-radius:50%;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:15px;color:var(--text2)" onclick="calNext()"><i class="fa-solid fa-chevron-right"></i></button>
+        <button style="width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:15px;color:var(--text2)" onclick="calNext()"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
       <div class="cal-wrap" id="cal-grid"></div>
     </div>
@@ -325,9 +326,9 @@ code{background:var(--gray);padding:2px 6px;border-radius:5px;font-size:12px;fon
     <div class="ph">
       <div class="ph-title"><span class="em">📊</span>每月總表</div>
       <div style="display:flex;align-items:center;gap:8px">
-        <button style="width:36px;height:36px;border-radius:50%;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:14px;color:var(--text2)" onclick="sumPrev()"><i class="fa-solid fa-chevron-left"></i></button>
+        <button style="width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:14px;color:var(--text2)" onclick="sumPrev()"><i class="fa-solid fa-chevron-left"></i></button>
         <span id="sum-title" style="font-weight:900;font-size:15px"></span>
-        <button style="width:36px;height:36px;border-radius:50%;border:2px solid var(--border);background:#fff;cursor:pointer;font-size:14px;color:var(--text2)" onclick="sumNext()"><i class="fa-solid fa-chevron-right"></i></button>
+        <button style="width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:#fff;cursor:pointer;font-size:14px;color:var(--text2)" onclick="sumNext()"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
     <div class="card"><div id="sum-table"></div></div>
@@ -1031,11 +1032,11 @@ function submitLeave(){
   leaveRequests.push({id:nextId('l'),teacherId:tid,type,startDate:sd,startTime:st,endDate:ed,endTime:et,minutes:r.minutes,days:r.days,reason,status:'pending',createdAt:todayStr()});
   saveAll();closeOv('ov-leave');toast('請假申請已送出 📄');renderPage(curPage);
 }
-function approveLeave(id){if(!authState.isAdmin){toast('請先登入管理模式','e');return;}const r=leaveRequests.find(x=>x.id===id);if(!r)return;r.status='approved';r.approvedAt=todayStr();r.approvedBy='行政辦公室';r.locked=true;appMeta.lastUpdated=new Date().toISOString();appMeta.lastUpdatedBy='行政辦公室';saveAll();toast('假單已核准 ✅');renderPage(curPage);}
-function rejectLeave(id){if(!authState.isAdmin){toast('請先登入管理模式','e');return;}const r=leaveRequests.find(x=>x.id===id);if(!r)return;r.status='rejected';r.rejectedAt=todayStr();r.rejectedBy='行政辦公室';r.locked=true;saveAll();toast('假單已拒絕');renderPage(curPage);}
-function deleteLeave(id){if(!authState.isAdmin){toast('請先登入管理模式','e');return;}openCfm('刪除假單','確定要刪除此假單嗎？此操作不可復原。',()=>{leaveRequests=leaveRequests.filter(x=>x.id!==id);saveAll();toast('已刪除');renderPage(curPage);});}
+function approveLeave(id){if(!authState.isAdmin){toast('請先登入管理模式','e');return;}openCfm('核准假單','確定要核准此假單嗎？',()=>{const r=leaveRequests.find(x=>x.id===id);if(!r)return;r.status='approved';r.approvedAt=todayStr();r.approvedBy='行政辦公室';r.locked=true;appMeta.lastUpdated=new Date().toISOString();appMeta.lastUpdatedBy='行政辦公室';saveAll();toast('假單已核准 ✅');renderPage(curPage);});}
+function rejectLeave(id){if(!authState.isAdmin){toast('請先登入管理模式','e');return;}openCfm('拒絕假單','確定要退回此假單嗎？',()=>{const r=leaveRequests.find(x=>x.id===id);if(!r)return;r.status='rejected';r.rejectedAt=todayStr();r.rejectedBy='行政辦公室';r.locked=true;saveAll();toast('假單已退回');renderPage(curPage);});}
+function deleteLeave(id){if(!authState.isAdmin){toast('請先登入管理模式','e');return;}openCfm('撤銷/刪除假單','確定要刪除此假單嗎？若為已核准假單，刪除後時數將自動歸還給教師。此操作不可復原。',()=>{leaveRequests=leaveRequests.filter(x=>x.id!==id);saveAll();toast('已刪除，時數已重算');renderPage(curPage);});}
 function setLTab(tab,btn){lTab=tab;document.querySelectorAll('#leave-tabs .tab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderLeave();}
-function renderLeave(){const c=document.getElementById('leave-content');if(lTab==='balance'){if(teachers.length===0){c.innerHTML=emptyHtml('👩‍🏫','請先新增教師');return;}let html='';teachers.forEach(t=>{const total=annualLeave(t.hireDate,t.carryover);const used=leaveRequests.filter(r=>r.teacherId===t.id&&r.type==='annual'&&r.status==='approved').reduce((a,r)=>a+r.days,0);const bal=Math.max(0,total-used);const cb=compBalance(t.id);html+=`<div style="display:flex;align-items:center;gap:10px;padding:11px 14px;background:#fff;border-radius:var(--r-md);border:1px solid var(--border);margin-bottom:7px"><div style="font-size:22px">${t.emoji||'👩‍🏫'}</div><div><div style="font-weight:800">${t.name}</div><div style="font-size:11px;color:var(--text3)">${t.cls}</div></div><div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap"><span class="tag t-b">特休 ${bal}天</span><span class="tag t-gray">已用 ${used}天</span><span class="tag t-g">補休 ${m2hm(cb)}</span>${bal<=3?'<span class="tag t-r">⚠️不足</span>':''}</div></div>`;});c.innerHTML=html;return;}const filtered=leaveRequests.filter(r=>r.status===lTab);if(filtered.length===0){c.innerHTML=emptyHtml('📭','此分類暫無資料');return;}let html='';filtered.slice().sort((a,b)=>b.createdAt.localeCompare(a.createdAt)).forEach(r=>{const t=teacherById(r.teacherId);const lt=LEAVE_TYPES[r.type];html+=`<div class="list-item"><div class="li-header"><div class="li-name">${t?t.emoji+' '+t.name:'?'} <span class="tag ${lt.color}">${lt.label}</span></div>${r.locked?'<span class="locked-badge"><i class="fa-solid fa-lock"></i>已鎖定</span>':''}</div><div class="li-meta">📅 ${fmtD(r.startDate)} ${r.startTime} — ${fmtD(r.endDate)} ${r.endTime}<br>⏱️ ${m2hm(r.minutes)}（${r.days}天）${r.reason?' · '+r.reason:''}${r.approvedAt?'<br>✅ 核准：'+fmtD(r.approvedAt):''}${r.rejectedAt?'<br>❌ 拒絕：'+fmtD(r.rejectedAt):''}</div><div class="li-actions">${r.status==='pending'?(authState.isAdmin?`<button class="btn btn-s btn-sm" onclick="approveLeave(${r.id})">✓ 核准</button><button class="btn btn-d btn-sm" onclick="rejectLeave(${r.id})">✕ 拒絕</button>`:'<span style="font-size:12px;color:var(--text3)">🔒 需管理模式</span>'):''}${!r.locked&&authState.isAdmin?`<button class="btn btn-g btn-sm" onclick="deleteLeave(${r.id})"><i class="fa-solid fa-trash"></i></button>`:''}</div></div>`;});c.innerHTML=html;}
+function renderLeave(){const c=document.getElementById('leave-content');if(lTab==='balance'){if(teachers.length===0){c.innerHTML=emptyHtml('👩‍🏫','請先新增教師');return;}let html='';teachers.forEach(t=>{const total=annualLeave(t.hireDate,t.carryover);const used=leaveRequests.filter(r=>r.teacherId===t.id&&r.type==='annual'&&r.status==='approved').reduce((a,r)=>a+r.days,0);const bal=Math.max(0,total-used);const cb=compBalance(t.id);html+=`<div style="display:flex;align-items:center;gap:10px;padding:11px 14px;background:#fff;border-radius:var(--r-md);border:1px solid var(--border);margin-bottom:7px"><div style="font-size:22px">${t.emoji||'👩‍🏫'}</div><div><div style="font-weight:800">${t.name}</div><div style="font-size:11px;color:var(--text3)">${t.cls}</div></div><div style="margin-left:auto;display:flex;gap:6px;flex-wrap:wrap"><span class="tag t-b">特休 ${bal}天</span><span class="tag t-gray">已用 ${used}天</span><span class="tag t-g">補休 ${m2hm(cb)}</span>${bal<=3?'<span class="tag t-r">⚠️不足</span>':''}</div></div>`;});c.innerHTML=html;return;}const filtered=leaveRequests.filter(r=>r.status===lTab);if(filtered.length===0){c.innerHTML=emptyHtml('📭','此分類暫無資料');return;}let html='';filtered.slice().sort((a,b)=>b.createdAt.localeCompare(a.createdAt)).forEach(r=>{const t=teacherById(r.teacherId);const lt=LEAVE_TYPES[r.type];html+=`<div class="list-item"><div class="li-header"><div class="li-name">${t?t.emoji+' '+t.name:'?'} <span class="tag ${lt.color}">${lt.label}</span></div>${r.locked?'<span class="locked-badge"><i class="fa-solid fa-lock"></i>已鎖定</span>':''}</div><div class="li-meta">📅 ${fmtD(r.startDate)} ${r.startTime} — ${fmtD(r.endDate)} ${r.endTime}<br>⏱️ ${m2hm(r.minutes)}（${r.days}天）${r.reason?' · '+r.reason:''}${r.approvedAt?'<br>✅ 核准：'+fmtD(r.approvedAt):''}${r.rejectedAt?'<br>❌ 拒絕：'+fmtD(r.rejectedAt):''}</div><div class="li-actions">${r.status==='pending'?(authState.isAdmin?`<button class="btn btn-s btn-sm" onclick="approveLeave(${r.id})">✓ 核准</button><button class="btn btn-d btn-sm" onclick="rejectLeave(${r.id})">✕ 拒絕</button>`:'<span style="font-size:12px;color:var(--text3)">🔒 需管理模式</span>'):''}${authState.isAdmin?`<button class="btn btn-g btn-sm" onclick="deleteLeave(${r.id})"><i class="fa-solid fa-trash"></i> 撤銷/刪除</button>`:''}</div></div>`;});c.innerHTML=html;}
 
 /* ============================================================ COMP ============================================================ */
 function openOTForm(){populateTSel(document.getElementById('ot-teacher'));document.getElementById('ot-pw').value='';populateTimeSel(document.getElementById('ot-st'),'17:30');populateTimeSel(document.getElementById('ot-et'),'19:00');document.getElementById('ot-date').value=todayStr();document.getElementById('ot-note').value='';document.getElementById('ot-calc').innerHTML='';openOv('ov-ot');calcOTH();}
@@ -1072,8 +1073,8 @@ function sumNext(){sumMonth++;if(sumMonth>11){sumMonth=0;sumYear++;}renderSummar
 function renderSummary(){document.getElementById('sum-title').textContent=`${sumYear}年${sumMonth+1}月`;const ms=`${sumYear}-${String(sumMonth+1).padStart(2,'0')}`;const lastDay=new Date(sumYear,sumMonth+1,0).getDate();const me=`${ms}-${String(lastDay).padStart(2,'0')}`;const mLeaves=leaveRequests.filter(r=>r.status==='approved'&&r.startDate<=me&&r.endDate>=ms+'-01');const mComps=compUseReqs.filter(r=>r.status==='approved'&&r.startDate<=me&&r.endDate>=ms+'-01');let html='';if(teachers.length===0||(mLeaves.length===0&&mComps.length===0)){html='<div class="empty"><span class="em">📭</span><p>本月暫無已核准假單資料</p></div>';}else{html=`<div class="table-wrap"><table class="dtable"><thead><tr><th>教師</th><th>班級</th><th>假別</th><th>日期</th><th>天數/時數</th><th>狀態</th></tr></thead><tbody>`;let hasRow=false;teachers.forEach(t=>{const tL=mLeaves.filter(r=>r.teacherId===t.id);const tC=mComps.filter(r=>r.teacherId===t.id);tL.forEach(r=>{const lt=LEAVE_TYPES[r.type];html+=`<tr><td>${t.emoji||''} ${t.name}</td><td><span class="tag t-o">${t.cls}</span></td><td><span class="tag ${lt.color}">${lt.label}</span></td><td>${fmtD(r.startDate)}—${fmtD(r.endDate)}</td><td><strong>${r.days}天</strong></td><td><span class="tag t-g">已核准</span></td></tr>`;hasRow=true;});tC.forEach(r=>{html+=`<tr><td>${t.emoji||''} ${t.name}</td><td><span class="tag t-o">${t.cls}</span></td><td><span class="tag t-g">補休</span></td><td>${fmtD(r.startDate)}—${fmtD(r.endDate)}</td><td><strong>${m2hm(r.minutes)}</strong></td><td><span class="tag t-g">已通過</span></td></tr>`;hasRow=true;});});if(!hasRow)html+='<tr><td colspan="6" style="text-align:center;padding:28px;color:var(--text3)">📭 本月無資料</td></tr>';html+='</tbody></table></div>';}document.getElementById('sum-table').innerHTML=html;const lu=appMeta.lastUpdated?new Date(appMeta.lastUpdated).toLocaleString('zh-TW'):'尚未更新';document.getElementById('sum-meta').textContent=`最後更新：${lu} · 更新者：${appMeta.lastUpdatedBy||'—'}`;}
 
 /* ============================================================ TEACHERS ============================================================ */
-const CLS_COL={'大班':'#FF8C42','中班':'#5CB85C','小班':'#4A90D9','幼幼班':'#FF8FAB','育德分班':'#9B72CF','辦公室':'#FFD166','其他':'#B0917C'};
-function renderTeachers(){const g=document.getElementById('teachers-grid');if(teachers.length===0){g.innerHTML=emptyHtml('👩‍🏫','目前尚無教師資料，請由行政辦公室新增第一筆教師資料');return;}g.innerHTML=teachers.map(t=>{const total=annualLeave(t.hireDate,t.carryover);const used=leaveRequests.filter(r=>r.teacherId===t.id&&r.type==='annual'&&r.status==='approved').reduce((a,r)=>a+r.days,0);const bal=Math.max(0,total-used);const cb=compBalance(t.id);const yrs=Math.floor((new Date()-new Date(t.hireDate))/(1000*60*60*24*365.25)*10)/10;const col=CLS_COL[t.cls]||'#B0917C';return `<div class="tc"><div class="tc-av" style="background:${col}22;color:${col}">${t.emoji||'👩‍🏫'}</div><div style="flex:1"><div class="tc-name">${t.name} <span class="tag t-gray" style="font-size:10px">${t.role==='admin'?'行政':'教師'}</span></div><div class="tc-sub">${t.cls} · 年資 ${yrs}年 · 到職 ${fmtD(t.hireDate)}</div><div class="tc-stats"><span class="tag t-b">特休 ${bal}天</span><span class="tag t-g">補休 ${m2hm(cb)}</span>${bal<=3?'<span class="tag t-r">⚠️不足</span>':''}</div><div style="display:flex;gap:7px;margin-top:10px"><button class="btn btn-o btn-sm" onclick="openEditTeacher(${t.id})">✏️ 修改</button><button class="btn btn-g btn-sm" onclick="confirmDelTeacher(${t.id})">🗑️ 刪除</button></div></div></div>`;}).join('');}
+const CLS_COL={'大班':'#0EA5E9','中班':'#10B981','小班':'#6366F1','幼幼班':'#EC4899','育德分班':'#8B5CF6','辦公室':'#F59E0B','其他':'#64748B'};
+function renderTeachers(){const g=document.getElementById('teachers-grid');if(teachers.length===0){g.innerHTML=emptyHtml('👩‍🏫','目前尚無教師資料，請由行政辦公室新增第一筆教師資料');return;}g.innerHTML=teachers.map(t=>{const total=annualLeave(t.hireDate,t.carryover);const used=leaveRequests.filter(r=>r.teacherId===t.id&&r.type==='annual'&&r.status==='approved').reduce((a,r)=>a+r.days,0);const bal=Math.max(0,total-used);const cb=compBalance(t.id);const yrs=Math.floor((new Date()-new Date(t.hireDate))/(1000*60*60*24*365.25)*10)/10;const col=CLS_COL[t.cls]||'#64748B';return `<div class="tc"><div class="tc-av" style="background:${col}22;color:${col}">${t.emoji||'👩‍🏫'}</div><div style="flex:1"><div class="tc-name">${t.name} <span class="tag t-gray" style="font-size:10px">${t.role==='admin'?'行政':'教師'}</span></div><div class="tc-sub">${t.cls} · 年資 ${yrs}年 · 到職 ${fmtD(t.hireDate)}</div><div class="tc-stats"><span class="tag t-b">特休 ${bal}天</span><span class="tag t-g">補休 ${m2hm(cb)}</span>${bal<=3?'<span class="tag t-r">⚠️不足</span>':''}</div><div style="display:flex;gap:7px;margin-top:10px">${authState.isAdmin?`<button class="btn btn-o btn-sm" onclick="openEditTeacher(${t.id})">✏️ 修改</button><button class="btn btn-g btn-sm" onclick="confirmDelTeacher(${t.id})">🗑️ 刪除</button>`:'<span style="font-size:12px;color:var(--text3)">🔒 需登入管理模式編輯</span>'}</div></div></div>`;}).join('');}
 function openTeacherForm(){editTeacherId=null;document.getElementById('tf-title').innerHTML='<span>👩‍🏫</span>新增教師';document.getElementById('tf-id').value='';document.getElementById('tf-name').value='';document.getElementById('tf-class').value='大班';document.getElementById('tf-hire').value='';document.getElementById('tf-carry').value='0';document.getElementById('tf-role').value='teacher';document.getElementById('tf-pw').value='';openOv('ov-teacher');}
 function openEditTeacher(id){const t=teacherById(id);if(!t)return;editTeacherId=id;document.getElementById('tf-title').innerHTML='<span>✏️</span>編輯教師';document.getElementById('tf-id').value=id;document.getElementById('tf-name').value=t.name;document.getElementById('tf-class').value=t.cls;document.getElementById('tf-hire').value=t.hireDate;document.getElementById('tf-carry').value=t.carryover||0;document.getElementById('tf-role').value=t.role;document.getElementById('tf-pw').value=t.password||'';openOv('ov-teacher');}
 function submitTeacher(){
@@ -1083,7 +1084,18 @@ function submitTeacher(){
   else{teachers.push({id:nextId('t'),name,cls,hireDate:hire,carryover:carry,role,emoji:'👩‍🏫',password});toast('教師已新增 🎉');}
   saveAll();closeOv('ov-teacher');renderTeachers();updateBadges();
 }
-function confirmDelTeacher(id){const t=teacherById(id);openCfm('刪除教師',`確定要刪除「${t?.name}」嗎？其所有假單、補休、排班資料也將一併移除。`,()=>{teachers=teachers.filter(x=>x.id!==id);leaveRequests=leaveRequests.filter(x=>x.teacherId!==id);otRecords=otRecords.filter(x=>x.teacherId!==id);compUseReqs=compUseReqs.filter(x=>x.teacherId!==id);schedules=schedules.filter(x=>x.teacherId!==id);saveAll();toast('教師已刪除');renderTeachers();updateBadges();});}
+function confirmDelTeacher(id){
+  if(!authState.isAdmin){toast('🔒 請先登入管理模式才能刪除教師','e');return;}
+  const t=teacherById(id);
+  openCfm('刪除教師',`確定要刪除「${t?.name}」嗎？其所有假單、補休、排班資料也將一併移除。`,()=>{
+    teachers=teachers.filter(x=>x.id!==id);
+    leaveRequests=leaveRequests.filter(x=>x.teacherId!==id);
+    otRecords=otRecords.filter(x=>x.teacherId!==id);
+    compUseReqs=compUseReqs.filter(x=>x.teacherId!==id);
+    schedules=schedules.filter(x=>x.teacherId!==id);
+    saveAll();toast('教師已刪除');renderTeachers();updateBadges();
+  });
+}
 
 /* ============================================================ CONFIRM / CLEAR ============================================================ */
 function openCfm(title,msg,cb){cfmCallback=cb;document.getElementById('cfm-title').textContent=title;document.getElementById('cfm-msg').textContent=msg;openOv('ov-confirm');}
